@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <EstudianteForm v-if="formulario"/>
+    <button @click="formulario=!formulario">Nuevo</button>
+    <Estudiante msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import Estudiante from '@/components/Estudiante.vue'
+import EstudianteForm from '@/components/EstudianteForm.vue'
 export default {
   name: 'home',
+  data() {
+    return {
+      formulario:false
+    }
+  },
   components: {
-    HelloWorld
-  }
+    Estudiante,
+    EstudianteForm
+  },
+  computed: {
+
+  },
+  methods: {
+
+  },
 }
 </script>
