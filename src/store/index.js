@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
+axios.defaults.baseURL = 'http://localhost:3000'
 import {mapEstudianteVtoAPI, mapEstudianteAPItoV} from '../mappers/estudiantes.map.js'
 
 Vue.use(Vuex)
@@ -62,7 +63,7 @@ export default new Vuex.Store({
       try {
         commit('mostrarLoading',{titulo:'Cargando...'})
         let access_token = localStorage.getItem('access_token')
-        await axios.get('http://localhost:3000/estudiantes/',{
+        await axios.get('/estudiantes/',{
           headers:{
             'Authorization':`Bearer ${access_token}`
           }
