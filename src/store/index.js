@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
-import mapEstudiante from '../mappers/estudiantes.map'
+import {mapEstudianteVtoAPI, mapEstudianteAPItoV} from '../mappers/estudiantes.map.js'
 
 Vue.use(Vuex)
 
@@ -80,14 +80,7 @@ export default new Vuex.Store({
       try {
         commit('mostrarLoading',{titulo:'Guardando...'})
         let access_token = localStorage.getItem('access_token')
-        let estudiante={
-          nombre: this.state.estudianteForm.nombre,
-          primer_apellido: this.state.estudianteForm.primer_apellido,
-          segundo_apellido: this.state.estudianteForm.segundo_apellido,
-          edad: this.state.estudianteForm.edad,
-          sexo: this.state.estudianteForm.sexo
-        }
-        await axios.post('http://localhost:3000/estudiantes/',estudiante,{
+        await axios.post('http://localhost:3000/estudiantes/',mapEstudianteVtoAPI(this.state.estudianteForm),{
           headers:{
               'Authorization':`Bearer ${access_token}`
           },       
@@ -96,7 +89,7 @@ export default new Vuex.Store({
           if (res.data.mensaje) {
               this.state.estudianteForm.error= res.data.mensaje                            
           }else{
-            commit('adicionarestudiante', estudiante)
+            commit('adicionarestudiante', mapEstudianteVtoAPI(this.state.estudianteForm))
             commit('limpiarFormularioEstudiante')
           }
         })
