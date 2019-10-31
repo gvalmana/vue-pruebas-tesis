@@ -1,14 +1,16 @@
 <template>
-  <div class="hello">
+  <div>
     <h1 v-if="loading.estado">{{loading.titulo}}</h1>
-    <table v-else>
-      <tr>
-        <td>Nombre</td>
-        <td>Primer Apellido</td>
-        <td>Segundo Apellido</td>
-        <td>Edad</td>
-        <td>Sexo</td>
-      </tr>
+    <table v-else class="table mt-2">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Primer Apellido</th>
+          <th>Segundo Apellido</th>
+          <th>Edad</th>
+          <th>Sexo</th>
+        </tr>
+      </thead>
       <tr v-for="item in estudiantes" :key="item.id">
         <td>{{item.nombre}}</td>
         <td>{{item.primer_apellido}}</td>

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <EstudianteForm v-if="formulario"/>
-    <button @click="formulario=!formulario">Nuevo</button>
+    <button @click="formulario=!formulario" class="btn btn-primary">Nuevo</button>
     <Estudiante msg="Welcome to Your Vue.js App"/>
   </div>
 </template>

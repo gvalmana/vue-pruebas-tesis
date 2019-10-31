@@ -1,6 +1,5 @@
-import {mapMutations} from 'vuex'
 import axios from 'axios'
-import store from '../store/index.js'
+
 export default {
   namespaced: true,
   state:{
@@ -62,10 +61,10 @@ export default {
       }
     },
   },
-  async insertarEstudiantes({ commit }){
+  async crearEstudiantes({ commit }){
     try {
       commit('mostrarLoading',{titulo:'Guardando...'},{ root: true })
-      alert('Hola mundo')
+      console.log(this.state.EstudianteForm)
       /*let access_token = localStorage.getItem('access_token')
       await axios.post('http://localhost:3000/estudiantes/',mapEstudianteVtoAPI(this.state.estudianteForm),{
         headers:{
