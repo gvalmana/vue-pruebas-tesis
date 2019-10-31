@@ -3,7 +3,8 @@ import Vuex from 'vuex'
 import axios from 'axios'
 
 axios.defaults.baseURL = 'http://localhost:3000'
-import {mapEstudianteVtoAPI, mapEstudianteAPItoV} from '../mappers/estudiantes.map.js'
+//import {mapEstudianteVtoAPI, mapEstudianteAPItoV} from '../mappers/estudiantes.map.js'
+import estudiantes from '../modules/estudiantes'
 
 Vue.use(Vuex)
 
@@ -13,7 +14,7 @@ export default new Vuex.Store({
       titulo:'',
       estado:false
     },
-    estudiantes:[],
+    /*estudiantes:[],
     estudianteForm:{
         nombre:'',
         primer_apellido:'',
@@ -27,8 +28,8 @@ export default new Vuex.Store({
           segundo_apellido:'',
           edad:'',
           sexo:''
-      }         
-    }
+      }
+    }*/
   },
   mutations: {
     mostrarLoading(state, payload){
@@ -38,13 +39,13 @@ export default new Vuex.Store({
     ocultarLoading(state){
       state.loading.estado = false
     },
-    cargarEstudiantes(state, estudiantesAccion){
+    /*cargarEstudiantes(state, estudiantesAccion){
       state.estudiantes = estudiantesAccion
     },
     adicionarestudiante(state,payload){
       state.estudiantes.push(payload)
-    },
-    limpiarFormularioEstudiante(state){
+    },*/
+    /*limpiarFormularioEstudiante(state){
       state.estudianteForm.nombre=''
       state.estudianteForm.primer_apellido=''
       state.estudianteForm.segundo_apellido=''
@@ -56,51 +57,34 @@ export default new Vuex.Store({
       state.estudianteForm.errores.segundo_apellido=''
       state.estudianteForm.errores.edad=''
       state.estudianteForm.errores.sexo=''
-    }
+    }*/
   },
   actions: {
-    async obtenerEstudiantes({ commit }){
-      try {
-        commit('mostrarLoading',{titulo:'Cargando...'})
-        let access_token = localStorage.getItem('access_token')
-        await axios.get('/estudiantes/',{
-          headers:{
-            'Authorization':`Bearer ${access_token}`
-          }
-        }).then((res)=>{
-          const estudiantes = res.data;
-          commit('cargarEstudiantes', estudiantes)
-        });           
-      } catch (error) {
-        console.log(error)        
-      }finally{
-        commit('ocultarLoading')
-      }      
-    },
-    async insertarEstudiantes({ commit }){
+    /*async insertarEstudiantes({ commit }){
       try {
         commit('mostrarLoading',{titulo:'Guardando...'})
         let access_token = localStorage.getItem('access_token')
         await axios.post('http://localhost:3000/estudiantes/',mapEstudianteVtoAPI(this.state.estudianteForm),{
           headers:{
               'Authorization':`Bearer ${access_token}`
-          },       
+          },
         })
         .then((res)=>{
           if (res.data.mensaje) {
-              this.state.estudianteForm.error= res.data.mensaje                            
+              this.state.estudianteForm.error= res.data.mensaje
           }else{
             commit('adicionarestudiante', mapEstudianteVtoAPI(this.state.estudianteForm))
             commit('limpiarFormularioEstudiante')
           }
         })
       } catch (error) {
-        console.log(error)        
+        console.log(error)
       }finally{
         commit('ocultarLoading')
       }
-    }
+    }*/
   },
   modules: {
+    estudiantes
   }
 })

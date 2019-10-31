@@ -30,18 +30,19 @@
     </div>
 </template>
 <script>
-import axios from 'axios'
 import {mapState} from 'vuex'
 import {mapMutations} from 'vuex'
 import {mapActions} from 'vuex'
+
 export default {
     name: 'EstudianteForm',
     computed: {
-        ...mapState(['estudiantes','estudianteForm'])
-    },    
+      ...mapState(['loading']),
+      ...mapState('estudiantes',['estudianteForm'])
+    },
     methods: {
         ...mapMutations(['mostrarLoading','ocultarLoading']),
-        ...mapActions(['insertarEstudiantes'])
+        ...mapActions('estudiantes',['insertarEstudiantes'])
     },
 }
 </script>

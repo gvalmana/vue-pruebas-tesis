@@ -7,6 +7,7 @@
         <td>Primer Apellido</td>
         <td>Segundo Apellido</td>
         <td>Edad</td>
+        <td>Sexo</td>
       </tr>
       <tr v-for="item in estudiantes" :key="item.id">
         <td>{{item.nombre}}</td>
@@ -28,14 +29,14 @@ import {mapActions} from 'vuex'
 export default {
   name: 'Estudiante',
   computed: {
-    ...mapState(['loading','estudiantes']),
-  },  
+    ...mapState(['loading']),
+    ...mapState('estudiantes',['estudiantes'])
+  },
   methods: {
-    ...mapMutations(['mostrarLoading','ocultarLoading','cargarEstudiantes']),
-    ...mapActions(['obtenerEstudiantes']),
+    ...mapActions('estudiantes',['obtenerEstudiantes']),
   },
   mounted() {
-    this.obtenerEstudiantes()    
+    this.obtenerEstudiantes()
   },
 }
 </script>
