@@ -60,29 +60,30 @@ export default {
         commit('ocultarLoading',null,{ root: true })
       }
     },
-  },
-  async crearEstudiantes({ commit }){
-    try {
-      commit('mostrarLoading',{titulo:'Guardando...'},{ root: true })
-      console.log(this.state.EstudianteForm)
-      /*let access_token = localStorage.getItem('access_token')
-      await axios.post('http://localhost:3000/estudiantes/',mapEstudianteVtoAPI(this.state.estudianteForm),{
-        headers:{
-            'Authorization':`Bearer ${access_token}`
-        },
-      })
-      .then((res)=>{
-        if (res.data.mensaje) {
-            this.state.estudianteForm.error= res.data.mensaje
-        }else{
-          commit('adicionarestudiante', mapEstudianteVtoAPI(this.state.estudianteForm))
-          commit('limpiarFormularioEstudiante')
-        }
-      })*/
-    } catch (error) {
-      console.log(error)
-    }finally{
-      commit('ocultarLoading',null,{ root: true })
+    async crearEstudiantes({ commit }){
+      try {
+        commit('mostrarLoading',{titulo:'Guardando...'},{ root: true })
+        console.log(this.state.EstudianteForm)
+        /*let access_token = localStorage.getItem('access_token')
+        await axios.post('http://localhost:3000/estudiantes/',mapEstudianteVtoAPI(this.state.estudianteForm),{
+          headers:{
+              'Authorization':`Bearer ${access_token}`
+          },
+        })
+        .then((res)=>{
+          if (res.data.mensaje) {
+              this.state.estudianteForm.error= res.data.mensaje
+          }else{
+            commit('adicionarestudiante', mapEstudianteVtoAPI(this.state.estudianteForm))
+            commit('limpiarFormularioEstudiante')
+          }
+        })*/
+      } catch (error) {
+        console.log(error)
+      }finally{
+        commit('ocultarLoading',null,{ root: true })
+      }
     }
-  }
+  },
+
 }
