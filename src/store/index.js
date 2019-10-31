@@ -10,10 +10,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    loading:{
-      titulo:'',
-      estado:false
+    loading: {
+      titulo: '',
+      estado: false
     },
+
     /*estudiantes:[],
     estudianteForm:{
         nombre:'',
@@ -31,12 +32,15 @@ export default new Vuex.Store({
       }
     }*/
   },
+  modules: {
+    estudiantes
+  },
   mutations: {
-    mostrarLoading(state, payload){
+    mostrarLoading(state, payload) {
       state.loading.titulo = payload.titulo
       state.loading.estado = true
     },
-    ocultarLoading(state){
+    ocultarLoading(state) {
       state.loading.estado = false
     },
     /*cargarEstudiantes(state, estudiantesAccion){
@@ -84,7 +88,5 @@ export default new Vuex.Store({
       }
     }*/
   },
-  modules: {
-    estudiantes
-  }
+
 })

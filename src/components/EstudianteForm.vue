@@ -40,7 +40,7 @@ export default {
       ...mapState('estudiantes',['estudianteForm'])
     },
     methods: {
-        ...mapActions('estudiantes',['crearEstudiantes'], {root: true})
+      ...mapActions('estudiantes',['crearEstudiantes']),
     },
 }
 </script>
