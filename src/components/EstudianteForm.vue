@@ -1,7 +1,7 @@
 <template>
     <div class="container my-2">
         <h3>{{estudianteForm.error}}</h3>
-        <form @submit.prevent="crearEstudiantes">
+        <form @submit.prevent="insertarEstudiantes">
           <div class="row">
             <div class="col-md-6">
               <label for="nombre">Nombre</label>
@@ -33,14 +33,13 @@
 <script>
 import {mapState} from 'vuex'
 import {mapActions} from 'vuex'
-
 export default {
     name: 'EstudianteForm',
     computed: {
       ...mapState('estudiantes',['estudianteForm'])
     },
     methods: {
-        ...mapActions('estudiantes',['crearEstudiantes'], {root: true})
+        ...mapActions('estudiantes',['insertarEstudiantes'])
     },
 }
 </script>

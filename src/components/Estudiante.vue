@@ -1,5 +1,13 @@
 <template>
-  <div>
+  <div class="container">
+    <b-alert
+      :show="dismissCountDown"
+      dismissible
+      variant="mensaje.color"
+      @dismissed="dismissCountDown=0"
+      @dismiss-count-down="countDownChanged"
+    >
+    </b-alert>
     <h1 v-if="loading.estado">{{loading.titulo}}</h1>
     <table v-else class="table mt-2">
       <thead class="thead-dark">

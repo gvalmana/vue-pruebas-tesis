@@ -14,8 +14,8 @@ export default new Vuex.Store({
       titulo:'',
       estado:false
     },
-    /*estudiantes:[],
-    estudianteForm:{
+    //estudiantes:[],
+    /*estudianteForm:{
         nombre:'',
         primer_apellido:'',
         segundo_apellido:'',
@@ -84,6 +84,7 @@ export default new Vuex.Store({
       }
     }*/
   },
+  getters: {},
   modules: {
     estudiantes
   }
