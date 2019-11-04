@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <EstudianteForm v-if="formulario"/>
-    <button @click="formulario=!formulario" class="btn btn-primary">Nuevo</button>
-    <Estudiante msg="Welcome to Your Vue.js App"/>
+    <button @click="mostrarFormulario" class="btn btn-primary">Nuevo</button>
+    <Estudiante/>
   </div>
 </template>
 
@@ -10,22 +10,19 @@
 // @ is an alias to /src
 import Estudiante from '@/components/Estudiante.vue'
 import EstudianteForm from '@/components/EstudianteForm.vue'
+import {mapState} from 'vuex'
+import {mapMutations} from 'vuex'
 export default {
   name: 'home',
-  data() {
-    return {
-      formulario:false
-    }
-  },
   components: {
     Estudiante,
     EstudianteForm
   },
   computed: {
-
+    ...mapState('estudiantes',['formulario'])
   },
   methods: {
-
+    ...mapMutations('estudiantes',['mostrarFormulario'])
   },
 }
 </script>
