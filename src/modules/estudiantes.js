@@ -59,7 +59,7 @@ export default {
             'Authorization':`Bearer ${access_token}`
           }
         }).then((res)=>{
-          const estudiantes = res.data;
+          const estudiantes = res.data.items;
           commit('cargarEstudiantes', estudiantes)
         });
       } catch (error) {
@@ -94,7 +94,7 @@ export default {
         commit('showAlert',{color:'success',texto:'El estudiante ha sido registrado correctamente.'},{ root: true })
       }
     },
-    async eliminarEstudiante({commit, state},id){
+    async eliminarEstudiante({commit},id){
       try {
         commit('mostrarLoading',{titulo:'Eliminando...'},{ root: true })
         const access_token = localStorage.getItem('access_token')
